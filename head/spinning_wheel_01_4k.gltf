@@ -15,18 +15,13 @@
   "nodes": [
     {
       "mesh": 0,
-      "name": "marble_bust_01",
-      "translation": [
-        0,
-        0.028335653245449066,
-        0
-      ]
+      "name": "spinning_wheel_01"
     }
   ],
   "materials": [
     {
       "doubleSided": true,
-      "name": "marble_bust_01",
+      "name": "spinning_wheel_01",
       "normalTexture": {
         "index": 0
       },
@@ -34,7 +29,6 @@
         "baseColorTexture": {
           "index": 1
         },
-        "metallicFactor": 0,
         "metallicRoughnessTexture": {
           "index": 2
         }
@@ -43,7 +37,7 @@
   ],
   "meshes": [
     {
-      "name": "marble_bust_01",
+      "name": "BezierCurve.020",
       "primitives": [
         {
           "attributes": {
@@ -74,76 +68,76 @@
   "images": [
     {
       "mimeType": "image/jpeg",
-      "name": "marble_bust_01_nor_gl",
-      "uri": "textures/marble_bust_01_nor_gl_4k.jpg"
+      "name": "spinning_wheel_01_nor_gl",
+      "uri": "textures/spinning_wheel_01_nor_gl_4k.jpg"
     },
     {
       "mimeType": "image/jpeg",
-      "name": "marble_bust_01_diff",
-      "uri": "textures/marble_bust_01_diff_4k.jpg"
+      "name": "spinning_wheel_01_diff",
+      "uri": "textures/spinning_wheel_01_diff_4k.jpg"
     },
     {
       "mimeType": "image/jpeg",
-      "name": "marble_bust_01_arm",
-      "uri": "textures/marble_bust_01_rough_4k.jpg"
+      "name": "spinning_wheel_01_metal-spinning_wheel_01_rough",
+      "uri": "textures/spinning_wheel_01_arm_4k.jpg"
     }
   ],
   "accessors": [
     {
       "bufferView": 0,
       "componentType": 5126,
-      "count": 9746,
+      "count": 35380,
       "max": [
-        0.14886942505836487,
-        0.48668384552001953,
-        0.1551172435283661
+        0.269286572933197,
+        0.9663301706314087,
+        0.550261378288269
       ],
       "min": [
-        -0.12288019061088562,
-        -0.028259359300136566,
-        -0.1445964276790619
+        -0.22011323273181915,
+        0.00010898223263211548,
+        -0.4745956361293793
       ],
       "type": "VEC3"
     },
     {
       "bufferView": 1,
       "componentType": 5126,
-      "count": 9746,
+      "count": 35380,
       "type": "VEC3"
     },
     {
       "bufferView": 2,
       "componentType": 5126,
-      "count": 9746,
+      "count": 35380,
       "type": "VEC2"
     },
     {
       "bufferView": 3,
       "componentType": 5123,
-      "count": 52368,
+      "count": 156069,
       "type": "SCALAR"
     }
   ],
   "bufferViews": [
     {
       "buffer": 0,
-      "byteLength": 116952,
+      "byteLength": 424560,
       "byteOffset": 0
     },
     {
       "buffer": 0,
-      "byteLength": 116952,
-      "byteOffset": 116952
+      "byteLength": 424560,
+      "byteOffset": 424560
     },
     {
       "buffer": 0,
-      "byteLength": 77968,
-      "byteOffset": 233904
+      "byteLength": 283040,
+      "byteOffset": 849120
     },
     {
       "buffer": 0,
-      "byteLength": 104736,
-      "byteOffset": 311872
+      "byteLength": 312138,
+      "byteOffset": 1132160
     }
   ],
   "samplers": [
@@ -154,8 +148,8 @@
   ],
   "buffers": [
     {
-      "byteLength": 416608,
-      "uri": "marble_bust_01.bin"
+      "byteLength": 1444300,
+      "uri": "spinning_wheel_01.bin"
     }
   ]
 }
