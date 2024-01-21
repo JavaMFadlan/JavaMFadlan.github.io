@@ -1,0 +1,11 @@
+Model Information:
+* title:	Desert ruins #MedievalRemixChallenge
+* source:	https://sketchfab.com/3d-models/desert-ruins-medievalremixchallenge-262c6748c7b0400899c613ce1933d9a3
+* author:	Artbake Graphics (https://sketchfab.com/ismir)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Desert ruins #MedievalRemixChallenge" (https://sketchfab.com/3d-models/desert-ruins-medievalremixchallenge-262c6748c7b0400899c613ce1933d9a3) by Artbake Graphics (https://sketchfab.com/ismir) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

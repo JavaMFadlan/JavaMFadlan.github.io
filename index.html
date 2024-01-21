@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Document</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-orbit-controls@1.3.2/dist/aframe-orbit-controls.min.js"></script>
+</head>
+<body>
+    <a-scene cursor="rayOrigin: mouse">
+        <a-assets>
+                <img id="sky" src="img/clear-blue-sky.jpg" >
+                <img id="sky-1" src="https://i.imgur.com/I7PAB.jpg" crossorigin="anonymous">
+                <a-asset-item id="village" src="castle/scene.gltf"></a-asset-item>
+                <a-asset-item id="desert" src="desert/scene.gltf"></a-asset-item>
+                <a-asset-item id="float" src="floating/scene.gltf"></a-asset-item>
+                <a-asset-item id="moai" src="moai/scene.gltf"></a-asset-item>
+                <a-asset-item id="statue" src="statue/horse_statue_01_4k.gltf"></a-asset-item>
+                <a-asset-item id="catapulte-o" src="catapult/catapulte.obj"></a-asset-item>
+                <a-asset-item id="catapulte-m" src="catapult/catapulte.mtl"></a-asset-item>
+                <a-asset-item id="horse-o" src="horse/horse_obj.obj"></a-asset-item>
+                <a-asset-item id="horse-m" src="horse/horse_mtl.mtl"></a-asset-item>
+        </a-assets>
+
+        <a-entity position="13 20 20">
+            <a-camera></a-camera>
+        </a-entity>
+
+        <!-- sky -->
+        <a-sky src="#sky"></a-sky>
+
+        <a-entity id="place" gltf-model="#village"></a-entity>
+
+        <!-- village -->
+        <a-entity
+            id="catapult-obj"
+            obj-model="obj: #catapulte-o; mtl: #catapulte-m"
+            position="-70 1 40"
+            scale="0.01 0.01 0.01"
+            rotation="0 -90 0"
+            clickable>
+        </a-entity>
+        <a-entity 
+            id="moai-obj"
+            gltf-model="#moai"
+            position="-60 7.5 20"
+            scale="1 1 1"
+            rotation="0 208 0"
+            clickable>
+        </a-entity>
+        <a-entity 
+            id="statue-obj"
+            gltf-model="#statue"
+            position="-65 1 13"
+            scale="30 30 30"
+            rotation="0 208 0"
+            clickable>
+        </a-entity>
+
+        <!-- desert -->
+        <!-- <a-entity
+            id="catapult-obj"
+            obj-model="obj: #catapulte-o; mtl: #catapulte-m"
+            position="-16 -0.7 0"
+            scale="0.005 0.005 0.005"
+            rotation="0 -170 0"
+            clickable>
+        </a-entity>
+        <a-entity 
+            id="moai-obj"
+            gltf-model="#moai"
+            position="-15 -2 30"
+            scale="1 1 1"
+            rotation="0 210 0"
+            clickable>
+        </a-entity>
+        <a-entity 
+            id="statue-obj"
+            gltf-model="#statue"
+            position="6 4.5 23"
+            scale="20 20 20"
+            rotation="0 0 0"
+            clickable>
+        </a-entity> -->
+
+        <!-- floating -->
+        <!-- <a-entity
+            id="catapult-obj"
+            obj-model="obj: #catapulte-o; mtl: #catapulte-m"
+            position="24.5 -3 -40"
+            scale="0.005 0.005 0.005"
+            rotation="0 90 0"
+            clickable>
+        </a-entity>
+        <a-entity 
+            id="moai-obj"
+            gltf-model="#moai"
+            position="-17 22 -9"
+            scale="1 1 1"
+            rotation="0 210 0"
+            clickable>
+        </a-entity>
+        <a-entity 
+            id="statue-obj"
+            gltf-model="#statue"
+            position="24.5 -3 -30"
+            scale="20 20 20"
+            rotation="0 90 0"
+            clickable>
+        </a-entity> -->
+
+    </a-scene>
+
+
+
+    <script>
+
+        
+        // Function to handle the click event
+        function handleClickVillage() {
+            var catapultObj = document.getElementById('catapult-obj');
+            var statueObj = document.getElementById('statue-obj');
+            var moaiObj = document.getElementById('moai-obj');
+            const sky = document.querySelector('a-sky');
+            const place = document.getElementById('place');
+            
+                sky.setAttribute('visible', true);
+                place.setAttribute('gltf-model', place.getAttribute('gltf-model') === 'floating/scene.gltf' || place.getAttribute('gltf-model') === 'desert/scene.gltf' ? 'castle/scene.gltf' : 'castle/scene.gltf');
+                catapultObj.setAttribute('position', '-70 1 40');
+                catapultObj.setAttribute('scale', '0.01 0.01 0.01');
+                catapultObj.setAttribute('rotation', '0 -90 0');
+    
+                // Restore moai-obj attributes
+                moaiObj.setAttribute('position', '-60 7.5 20');
+                moaiObj.setAttribute('rotation', '0 208 0');
+    
+                // Restore statue-obj attributes
+                statueObj.setAttribute('position', '-65 1 13');
+                statueObj.setAttribute('scale', '30 30 30');
+                statueObj.setAttribute('rotation', '0 208 0');
+
+        }
+        function handleClickDesert() {
+            var catapultObj = document.getElementById('catapult-obj');
+            var moaiObj = document.getElementById('moai-obj');
+            var statueObj = document.getElementById('statue-obj');
+            const sky = document.querySelector('a-sky');
+            const place = document.getElementById('place');
+            
+                sky.setAttribute('visible', true);
+                place.setAttribute('gltf-model', place.getAttribute('gltf-model') === 'castle/scene.gltf' || place.getAttribute('gltf-model') === 'float/scene.gltf'  ? 'desert/scene.gltf' : 'desert/scene.gltf');
+                // Update catapult-obj attributes
+                catapultObj.setAttribute('position', '-16 -0.7 0');
+                catapultObj.setAttribute('scale', '0.005 0.005 0.005');
+                catapultObj.setAttribute('rotation', '0 -170 0');
+    
+                // Update moai-obj attributes
+                moaiObj.setAttribute('position', '-15 -2 30');
+                moaiObj.setAttribute('rotation', '0 210 0');
+    
+                // Update statue-obj attributes
+                statueObj.setAttribute('position', '6 4.5 23');
+                statueObj.setAttribute('scale', '20 20 20');
+                statueObj.setAttribute('rotation', '0 0 0');
+            
+        }
+
+        function handleClickFloat() {
+            var catapultObj = document.getElementById('catapult-obj');
+            var moaiObj = document.getElementById('moai-obj');
+            var statueObj = document.getElementById('statue-obj');
+            const sky = document.querySelector('a-sky');
+            const place = document.getElementById('place');
+            
+                sky.setAttribute('visible', false);
+                place.setAttribute('gltf-model', place.getAttribute('gltf-model') === 'castle/scene.gltf' || place.getAttribute('gltf-model') === 'desert/scene.gltf' ? 'floating/scene.gltf' : 'floating/scene.gltf');
+                // Update attributes for catapult-obj
+                catapultObj.setAttribute('position', '24.5 -3 -40');
+                catapultObj.setAttribute('scale', '0.005 0.005 0.005');
+                catapultObj.setAttribute('rotation', '0 -170 0');
+    
+                // Update attributes for moai-obj
+                moaiObj.setAttribute('position', '-17 22 -9');
+                moaiObj.setAttribute('rotation', '0 210 0');
+    
+                // Update attributes for statue-obj
+                statueObj.setAttribute('position', '24.5 -3 -30');
+                statueObj.setAttribute('scale', '20 20 20');
+                statueObj.setAttribute('rotation', '0 0 0');
+        }
+  
+        // Register the click event handler
+        document.querySelector('#moai-obj').addEventListener('click', handleClickVillage);
+        document.querySelector('#statue-obj').addEventListener('click', handleClickDesert);
+        document.querySelector('#catapult-obj').addEventListener('click', handleClickFloat);
+      </script>
+</body>
+</html>
