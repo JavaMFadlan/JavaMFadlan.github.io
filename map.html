@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Ar</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.3/dist/aframe-environment-component.min.js"></script>
+    
+</head>
+<body>
+    <a-scene cursor="rayOrigin: mouse" embedded arjs>
+        <a-assets>
+                <img id="sky" src="img/clear-blue-sky.jpg" >
+                <img id="sky-1" src="https://i.imgur.com/I7PAB.jpg" crossorigin="anonymous">
+                <a-asset-item id="village" src="castle/scene.gltf"></a-asset-item>
+                <a-asset-item id="desert" src="desert/scene.gltf"></a-asset-item>
+                <a-asset-item id="float" src="floating/scene.gltf"></a-asset-item>
+                <a-asset-item id="moai" src="moai/scene.gltf"></a-asset-item>
+                <a-asset-item id="statue" src="statue/horse_statue_01_4k.gltf"></a-asset-item>
+                <a-asset-item id="catapulte-o" src="White-TailedDeer_V1/12961_White-Tailed_Deer_v1_l2.obj"></a-asset-item>
+                <a-asset-item id="catapulte-m" src="White-TailedDeer_V1/12961_White-Tailed_Deer_v1_l2.mtl"></a-asset-item>
+                <a-asset-item id="horse-o" src="horse/horse_obj.obj"></a-asset-item>
+                <a-asset-item id="horse-m" src="horse/horse_mtl.mtl"></a-asset-item>
+        </a-assets>
+        
+            <a-marker preset='hiro' >
+                <a-entity gltf-model="#village" scale="0.01 0.01 0.01">
+                </a-entity>
+            </a-marker>
+
+            <a-marker type='pattern' url='pattern/pattern-cool.patt' >
+                <a-entity gltf-model="#desert" scale="0.01 0.01 0.01">
+                </a-entity>
+            </a-marker>
+
+            <a-marker preset='kanji' id="kanji">
+                
+            </a-marker>
+
+    </a-scene>
+
+
+
+    <script>
+        document.getElementById('kanji').addEventListener('markerFound', function() {
+            // Ketika marker terdeteksi, beralih ke file kedua (second.html)
+            window.location.href = "index.html";
+        });
+        
+        // Function to handle the click event
+        function handleClickVillage() {
+            var catapultObj = document.getElementById('catapult-obj');
+            var statueObj = document.getElementById('statue-obj');
+            var moaiObj = document.getElementById('moai-obj');
+            const sky = document.querySelector('a-sky');
+            const place = document.getElementById('place');
+            const env = document.getElementById('env');
+            
+                sky.setAttribute('visible', true);
+                place.setAttribute('gltf-model', place.getAttribute('gltf-model') === 'floating/scene.gltf' || place.getAttribute('gltf-model') === 'desert/scene.gltf' ? 'castle/scene.gltf' : 'castle/scene.gltf');
+                env.setAttribute('environment', 'preset: forest');
+                env.setAttribute('visible', true);
+                catapultObj.setAttribute('position', '-70 1 40');
+                catapultObj.setAttribute('scale', '0.01 0.01 0.01');
+                catapultObj.setAttribute('rotation', '0 -90 0');
+    
+                // Restore moai-obj attributes
+                moaiObj.setAttribute('position', '-60 7.5 20');
+                moaiObj.setAttribute('rotation', '0 208 0');
+    
+                // Restore statue-obj attributes
+                statueObj.setAttribute('position', '-65 1 13');
+                statueObj.setAttribute('scale', '30 30 30');
+                statueObj.setAttribute('rotation', '0 208 0');
+
+        }
+        function handleClickDesert() {
+            var catapultObj = document.getElementById('catapult-obj');
+            var moaiObj = document.getElementById('moai-obj');
+            var statueObj = document.getElementById('statue-obj');
+            const sky = document.querySelector('a-sky');
+            const place = document.getElementById('place');
+            
+                sky.setAttribute('visible', true);
+                place.setAttribute('gltf-model', place.getAttribute('gltf-model') === 'castle/scene.gltf' || place.getAttribute('gltf-model') === 'float/scene.gltf'  ? 'desert/scene.gltf' : 'desert/scene.gltf');
+                env.setAttribute('environment', 'preset: yavapai; ground: flat, position: 0 -20 0');
+                env.setAttribute('visible', true);
+                // Update catapult-obj attributes
+                catapultObj.setAttribute('position', '-16 -0.7 0');
+                catapultObj.setAttribute('scale', '0.005 0.005 0.005');
+                catapultObj.setAttribute('rotation', '0 -170 0');
+    
+                // Update moai-obj attributes
+                moaiObj.setAttribute('position', '-15 -2 30');
+                moaiObj.setAttribute('rotation', '0 210 0');
+    
+                // Update statue-obj attributes
+                statueObj.setAttribute('position', '6 4.5 23');
+                statueObj.setAttribute('scale', '20 20 20');
+                statueObj.setAttribute('rotation', '0 0 0');
+            
+        }
+
+        function handleClickFloat() {
+            var catapultObj = document.getElementById('catapult-obj');
+            var moaiObj = document.getElementById('moai-obj');
+            var statueObj = document.getElementById('statue-obj');
+            const sky = document.querySelector('a-sky');
+            const place = document.getElementById('place');
+            
+                sky.setAttribute('visible', false);
+                place.setAttribute('gltf-model', place.getAttribute('gltf-model') === 'castle/scene.gltf' || place.getAttribute('gltf-model') === 'desert/scene.gltf' ? 'floating/scene.gltf' : 'floating/scene.gltf');
+                env.setAttribute('environment', 'preset: starry; position: 0 -200 0');
+                env.setAttribute('visible', true);
+                // Update attributes for catapult-obj
+                catapultObj.setAttribute('position', '24.5 -3 -40');
+                catapultObj.setAttribute('scale', '0.005 0.005 0.005');
+                catapultObj.setAttribute('rotation', '0 -170 0');
+    
+                // Update attributes for moai-obj
+                moaiObj.setAttribute('position', '-17 22 -9');
+                moaiObj.setAttribute('rotation', '0 210 0');
+    
+                // Update attributes for statue-obj
+                statueObj.setAttribute('position', '24.5 -3 -30');
+                statueObj.setAttribute('scale', '20 20 20');
+                statueObj.setAttribute('rotation', '0 0 0');
+        }
+  
+        // Register the click event handler
+        document.querySelector('#moai-obj').addEventListener('click', handleClickVillage);
+        document.querySelector('#statue-obj').addEventListener('click', handleClickDesert);
+        document.querySelector('#catapult-obj').addEventListener('click', handleClickFloat);
+      </script>
+</body>
+</html>

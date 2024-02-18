@@ -17,29 +17,40 @@
                 <a-asset-item id="float" src="floating/scene.gltf"></a-asset-item>
                 <a-asset-item id="moai" src="moai/scene.gltf"></a-asset-item>
                 <a-asset-item id="statue" src="statue/horse_statue_01_4k.gltf"></a-asset-item>
-                <a-asset-item id="catapulte-o" src="catapult/catapulte.obj"></a-asset-item>
-                <a-asset-item id="catapulte-m" src="catapult/catapulte.mtl"></a-asset-item>
+                <a-asset-item id="catapulte-o" src="White-TailedDeer_V1/12961_White-Tailed_Deer_v1_l2.obj"></a-asset-item>
+                <a-asset-item id="catapulte-m" src="White-TailedDeer_V1/12961_White-Tailed_Deer_v1_l2.mtl"></a-asset-item>
                 <a-asset-item id="horse-o" src="horse/horse_obj.obj"></a-asset-item>
                 <a-asset-item id="horse-m" src="horse/horse_mtl.mtl"></a-asset-item>
         </a-assets>
 
-        <a-entity position="13 20 20">
+        <a-entity position="-80 2 40">
             <a-camera></a-camera>
         </a-entity>
+        
 
         <!-- sky -->
         <a-sky src="#sky"></a-sky>
 
         <a-entity id="env" environment="preset: forest"></a-entity>
         <a-entity id="place" gltf-model="#village"></a-entity>
+        
+        
+
+        <a-entity position="-68.2 3.5 40"  rotation="0 90 0">
+            <a-marker preset='hiro' id="hiro" >
+                <!-- <a-entity id="place" gltf-model="#village" scale="0.01 0.01 0.01"> -->
+                </a-entity>
+            </a-marker>
+            <!-- <a-plane src="img/hiro.png" height="1" width="1" ></a-plane> -->
+        </a-entity>
 
         <!-- village -->
         <a-entity
             id="catapult-obj"
             obj-model="obj: #catapulte-o; mtl: #catapulte-m"
-            position="-70 1 40"
-            scale="0.01 0.01 0.01"
-            rotation="0 -90 0"
+            position="-70 0.3 40"
+            scale="0.05 0.05 0.05"
+            rotation="-90 0 0"
             clickable>
         </a-entity>
         <a-entity 
@@ -116,7 +127,10 @@
 
 
     <script>
-
+        document.getElementById('hiro').addEventListener('markerFound', function() {
+            // Ketika marker terdeteksi, beralih ke file kedua (second.html)
+            window.location.href = "map.html";
+        });
         
         // Function to handle the click event
         function handleClickVillage() {
@@ -131,9 +145,9 @@
                 place.setAttribute('gltf-model', place.getAttribute('gltf-model') === 'floating/scene.gltf' || place.getAttribute('gltf-model') === 'desert/scene.gltf' ? 'castle/scene.gltf' : 'castle/scene.gltf');
                 env.setAttribute('environment', 'preset: forest');
                 env.setAttribute('visible', true);
-                catapultObj.setAttribute('position', '-70 1 40');
-                catapultObj.setAttribute('scale', '0.01 0.01 0.01');
-                catapultObj.setAttribute('rotation', '0 -90 0');
+                catapultObj.setAttribute('position', '-70 0.3 40');
+                catapultObj.setAttribute('scale', '0.05 0.05 0.05');
+                catapultObj.setAttribute('rotation', '0 0 0');
     
                 // Restore moai-obj attributes
                 moaiObj.setAttribute('position', '-60 7.5 20');
@@ -158,8 +172,8 @@
                 env.setAttribute('visible', true);
                 // Update catapult-obj attributes
                 catapultObj.setAttribute('position', '-16 -0.7 0');
-                catapultObj.setAttribute('scale', '0.005 0.005 0.005');
-                catapultObj.setAttribute('rotation', '0 -170 0');
+                catapultObj.setAttribute('scale', '0.05 0.05 0.05');
+                catapultObj.setAttribute('rotation', '0 0 0');
     
                 // Update moai-obj attributes
                 moaiObj.setAttribute('position', '-15 -2 30');
@@ -185,8 +199,8 @@
                 env.setAttribute('visible', true);
                 // Update attributes for catapult-obj
                 catapultObj.setAttribute('position', '24.5 -3 -40');
-                catapultObj.setAttribute('scale', '0.005 0.005 0.005');
-                catapultObj.setAttribute('rotation', '0 -170 0');
+                catapultObj.setAttribute('scale', '0.05 0.05 0.05');
+                catapultObj.setAttribute('rotation', '0 0 0');
     
                 // Update attributes for moai-obj
                 moaiObj.setAttribute('position', '-17 22 -9');
